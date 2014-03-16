@@ -1,0 +1,15 @@
+./bin-i386
+./etc
+./libexec-i386
+./share
+./sbin-i386
+./var
+./www
+./CONTROL/icon-disable.png
+./CONTROL/icon.png
+./CONTROL/start-stop.sh
+./CONTROL/changelog.txt
+./CONTROL/config.json
+./CONTROL/pre-install.sh
+./CONTROL/description.txt
+./CONTROL/post-install.sh

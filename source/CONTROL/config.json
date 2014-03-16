@@ -1,0 +1,37 @@
+{
+  "general":{
+	"package":"squid",
+	"name":"Squid",
+	"version":"3.4.2-r1",
+	"depends":[],
+	"conflicts":[],
+	"developer":"Squid",
+	"maintainer":"MrK",
+	"email":"squid-for-asustor@kupper.org",
+	"website":"http://www.squid-cache.org",
+	"architecture":"##ARCH##",
+	"firmware":"2.0"
+  },
+  "adm-desktop":{
+	"app":{
+	  "type":"webserver"
+	},
+	"privilege":{
+	  "accessible":"users",
+	  "customizable":true
+	}
+  },
+  "register":{
+	"port":[
+	  "T3128"
+	],
+ 	"boot-priority":{
+	  "start-order":91,
+	  "stop-order":39
+	},
+	"prerequisites":{
+	  "enable-service":[],
+	  "restart-service":[]
+	}
+  }
+}

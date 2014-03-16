@@ -1,0 +1,15 @@
+./bin-x86-64
+./etc
+./libexec-x86-64
+./share
+./sbin-x86-64
+./var
+./www
+./CONTROL/icon-disable.png
+./CONTROL/icon.png
+./CONTROL/start-stop.sh
+./CONTROL/changelog.txt
+./CONTROL/config.json
+./CONTROL/pre-install.sh
+./CONTROL/description.txt
+./CONTROL/post-install.sh
