@@ -9,7 +9,7 @@ export PKG_DAEMON=${APKG_PKG_DIR}/sbin/squid
 
 export USER=admin
 export GROUP=administrators
-export STOP_TIMEOUT=10
+export STOP_TIMEOUT=180
 
 #export PATH="${PATH:+$PKG_PATH:}/sbin"
 #export LD_LIBRARY_PATH="$PKG_PATH/lib"
@@ -56,16 +56,22 @@ case "$1" in
     stop)
         echo "Stopping $NAME"
         #$PKG_DAEMON $OPTIONS -k shutdown
-        su -c "$PKG_DAEMON $OPTIONS -k shutdown" - admin
+        su -c "$PKG_DAEMON -k shutdown" - admin
+        wait_pid $PKG_DAEMON $STOP_TIMEOUT
         ;;
     restart|force-reload)
         echo "Restarting $NAME"
-        $PKG_DAEMON $OPTIONS -k shutdown
+        su -c "$PKG_DAEMON -k shutdown" - admin
         wait_pid $PKG_DAEMON $STOP_TIMEOUT
-        start_daemon
+        #start_daemon
+        su -c "$PKG_DAEMON $OPTIONS" - admin
+        ;;
+    reconfigure|parse|rotate|check|debug|interrupt|kill)
+        echo "$1 $NAME"
+        su -c "$PKG_DAEMON -k $1" - admin
         ;;
     *)
-        echo "Usage: $0 {start|stop|force-reload|restart}"
+        echo "Usage: $0 {start|stop|force-reload|restart|reconfigure|parse|rotate|check|debug|interrupt|kill}"
         exit 2
         ;;
 esac
